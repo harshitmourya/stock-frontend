@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+}
+@keyframes fadeInCentered {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.animate-fade-in-centered {
+  animation: fadeInCentered 1.5s ease-out forwards;
+}
+
+
