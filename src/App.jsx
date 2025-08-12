@@ -42,7 +42,7 @@ function App() {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.get(`http://localhost:5000/api/stocks/${symbol}`);
+      const response = await axios.get(`https://stock-backend-zv68.onrender.com/api/stock${symbol}`);
       setStockData(response.data);
 
       if (response.data.suggestion === "BUY") {
