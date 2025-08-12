@@ -108,7 +108,7 @@ function App() {
         {/* Foreground */}
         <div className="relative z-10 w-full flex flex-col items-center">
           <h1 className="text-4xl sm:text-5xl font-bold mb-8 text-center drop-shadow-xl animate-fade-in">
-            Real-Time Stock Insights
+             Info About Stocks
           </h1>
 
           {marketStatus && (
