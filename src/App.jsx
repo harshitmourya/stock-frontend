@@ -42,7 +42,7 @@ function App() {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.get(`https://stock-backend-zv68.onrender.com/api/stocks/${symbol}`);
+      const response = await axios.get(`https://stock-backend-harshit.vercel.app/api/stocks/${symbol}`);
       setStockData(response.data);
 
       if (response.data.suggestion === "BUY") {
