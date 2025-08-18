@@ -12,21 +12,46 @@ const formatVolume = (val) => {
 
 const getMarketStatus = () => {
   const now = new Date();
+  const day = now.getDay(); // 0 = Sunday, 6 = Saturday
   const hours = now.getHours();
   const minutes = now.getMinutes();
   const totalMinutes = hours * 60 + minutes;
 
-  const marketOpen = 9 * 60 + 15;
-  const marketClose = 15 * 60 + 15;
+  const marketOpen = 9 * 60 + 15;   // 9:15 AM
+  const marketClose = 15 * 60 + 15; // 3:15 PM
 
-  if (totalMinutes < marketOpen) {
-    return "📴 Market is closed. Please access at 9:15 AM";
+  let nextOpen = new Date(now);
+
+  // Weekend handling
+  if (day === 6) { 
+    // Saturday → Monday
+    nextOpen.setDate(now.getDate() + 2);
+  } else if (day === 0) { 
+    // Sunday → Monday
+    nextOpen.setDate(now.getDate() + 1);
+  } else if (day === 5 && totalMinutes >= marketClose) { 
+    // Friday after close → Monday
+    nextOpen.setDate(now.getDate() + 3);
   } else if (totalMinutes >= marketClose) {
-    return "📴 Market is closed. Please come back tomorrow at 9:15 AM";
+    // Weekday after close → Tomorrow
+    nextOpen.setDate(now.getDate() + 1);
+  } else if (totalMinutes < marketOpen) {
+    // Before open → Same day at 9:15
   } else {
+    // Market is open right now
     return null;
   }
+
+  // Set time to 9:15 AM
+  nextOpen.setHours(9, 15, 0, 0);
+
+  // Format date
+  const options = { weekday: "long", day: "numeric", month: "short" };
+  const formattedDate = nextOpen.toLocaleDateString("en-US", options);
+
+  return `📴 Market is closed. It will open on ${formattedDate} at 9:15 AM`;
 };
+
 
 function App() {
   const [symbol, setSymbol] = useState("");
