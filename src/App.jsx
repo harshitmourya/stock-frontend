@@ -101,7 +101,7 @@ function App() {
           : "bg-white text-gray-900 border-gray-300"
           }`}
       >
-         <h1 className="text-4xl font-bold">Stocky</h1>
+         <h1 className="text-4xl font-bold">StockPulse</h1>
 
         <div className="flex items-center gap-2" >
           <img
