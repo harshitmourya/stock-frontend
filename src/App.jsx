@@ -133,7 +133,7 @@ function App() {
         {/* Foreground */}
         <div className="relative z-10 w-full flex flex-col items-center">
           <h1 className="text-4xl sm:text-5xl font-bold mb-8 text-center drop-shadow-xl animate-fade-in">
-             Info About Stocks
+             Indian Market Pulse
           </h1>
 
           {marketStatus && (
